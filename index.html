@@ -70,12 +70,20 @@
       max-width: 90%;
       text-align: center;
       line-height: 1.6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .cantadas img {
       width: 60px;
       height: auto;
-      margin: 10px;
+    }
+
+    .left {
+      order: -1;
     }
 
     audio, .spotify-button {
@@ -121,9 +129,9 @@
     <img src="foto16.jpg" alt="Foto 16">
   </section>
 
-  <div class="cantadas">
-    <p id="cantada"></p>
+  <div class="cantadas" id="cantada-container">
     <img id="cantada-img" src="fig1.png" alt="cantada imagem">
+    <p id="cantada"></p>
   </div>
 
   <audio controls>
@@ -190,15 +198,14 @@
       "fig5.png"
     ];
 
-    function trocarCantada() {
-      const randIndex = Math.floor(Math.random() * cantadas.length);
-      const randImg = Math.floor(Math.random() * imagens.length);
-      document.getElementById("cantada").textContent = cantadas[randIndex];
-      document.getElementById("cantada-img").src = imagens[randImg];
-    }
+    const randIndex = Math.floor(Math.random() * cantadas.length);
+    const randImg = Math.floor(Math.random() * imagens.length);
+    const imgSide = Math.random() < 0.5 ? 'left' : 'right';
 
-    setInterval(trocarCantada, 4000);
-    trocarCantada();
+    document.getElementById("cantada").textContent = cantadas[randIndex];
+    const imgElement = document.getElementById("cantada-img");
+    imgElement.src = imagens[randImg];
+    imgElement.classList.add(imgSide === 'left' ? 'left' : '');
   </script>
 </body>
 </html>
