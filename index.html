@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Nosso Tempo Juntos</title>
+  <style>
+    :root {
+      --primary-color: #0d1b2a;
+      --accent-color: #e63946;
+      --text-color: #ffffff;
+      --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--primary-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      background-color: #1b263b;
+      width: 100%;
+      padding: 20px 0;
+      font-size: 2em;
+      text-align: center;
+    }
+
+    #timer {
+      font-size: 1.5em;
+      margin: 20px;
+      color: var(--accent-color);
+      font-weight: 500;
+    }
+
+    .carousel {
+      display: flex;
+      overflow-x: scroll;
+      gap: 12px;
+      padding: 20px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      width: 100%;
+      max-width: 95vw;
+    }
+
+    .carousel img {
+      height: 240px;
+      border-radius: 16px;
+      flex-shrink: 0;
+      object-fit: cover;
+      scroll-snap-align: center;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease;
+    }
+
+    .carousel img:hover {
+      transform: scale(1.05);
+    }
+
+    audio, .spotify-button {
+      margin: 20px;
+    }
+
+    .heart-animation {
+      font-size: 2rem;
+      animation: pulse 1.5s infinite;
+      color: var(--accent-color);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <header>Nosso Tempo Juntos <span class="heart-animation">❤️</span></header>
+
+  <div id="timer"></div>
+
+  <section class="carousel">
+    <img src="foto1.jpg" alt="Foto 1">
+    <img src="foto2.jpg" alt="Foto 2">
+    <img src="foto3.jpg" alt="Foto 3">
+    <img src="foto4.jpg" alt="Foto 4">
+    <img src="foto5.jpg" alt="Foto 5">
+    <img src="foto6.jpg" alt="Foto 6">
+    <img src="foto7.jpg" alt="Foto 7">
+    <img src="foto8.jpg" alt="Foto 8">
+    <img src="foto9.jpg" alt="Foto 9">
+    <img src="foto10.jpg" alt="Foto 10">
+    <img src="foto11.jpg" alt="Foto 11">
+    <img src="foto12.jpg" alt="Foto 12">
+    <img src="foto13.jpg" alt="Foto 13">
+    <img src="foto14.jpg" alt="Foto 14">
+    <img src="foto15.jpg" alt="Foto 15">
+    <img src="foto16.jpg" alt="Foto 16">
+  </section>
+
+  <audio controls>
+    <source src="seu_audio.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <div class="spotify-button">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1OubIZ0ARYCUq5kceYUQiO?si=d65f16ca85ce4e53" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+  </div>
+
+  <script>
+    const startDate = new Date('2025-05-24T15:30:00');
+    function updateTimer() {
+      const now = new Date();
+      const diff = now - startDate;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById('timer').innerHTML = `${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos juntos <span class="heart-animation">❤️</span>`;
+    }
+
+    setInterval(updateTimer, 1000);
+    updateTimer();
+  </script>
+</body>
+</html>
