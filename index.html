@@ -61,6 +61,23 @@
       margin: 0 auto;
     }
 
+    .cantadas {
+      margin: 30px 20px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      font-size: 1rem;
+      max-width: 90%;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .cantadas img {
+      width: 60px;
+      height: auto;
+      margin: 10px;
+    }
+
     audio, .spotify-button {
       margin: 20px;
       width: 90%;
@@ -104,6 +121,11 @@
     <img src="foto16.jpg" alt="Foto 16">
   </section>
 
+  <div class="cantadas">
+    <p id="cantada"></p>
+    <img id="cantada-img" src="fig1.png" alt="cantada imagem">
+  </div>
+
   <audio controls>
     <source src="seu_audio.mp3" type="audio/mpeg">
     Seu navegador não suporta áudio.
@@ -118,17 +140,65 @@
     function updateTimer() {
       const now = new Date();
       const diff = now - startDate;
-
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
-
       document.getElementById('timer').innerHTML = `${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos juntos <span class="heart-animation">❤️</span>`;
     }
-
     setInterval(updateTimer, 1000);
     updateTimer();
+
+    const cantadas = [
+      "Você não é Wi-Fi, mas definitivamente me conectou.",
+      "Seu nome é Google? Porque você tem tudo o que eu procuro.",
+      "Se beleza fosse tempo, você seria eternidade.",
+      "Você não é GPS, mas me colocou no caminho certo.",
+      "Se você fosse um sonho, eu nunca queria acordar.",
+      "Seu pai é padeiro? Porque você é um sonho!",
+      "Você é o café do meu dia: sem você, eu não funciono.",
+      "Se beleza fosse crime, você estaria presa há muito tempo.",
+      "Você é feita de açúcar? Porque só de te olhar, minha glicose subiu!",
+      "Você tem mapa? Porque eu me perdi no seu olhar.",
+      "Você é mágico(a)? Porque sempre que te vejo, todo o resto desaparece.",
+      "Você não é nuvem, mas mexe com o meu clima.",
+      "Se eu fosse um gato, gastaria todas as minhas 7 vidas com você.",
+      "Você tem um nome ou posso te chamar de minha?",
+      "Você é um pixel? Porque está sempre no centro da minha visão.",
+      "Seu sorriso ilumina mais que meu celular à noite.",
+      "Você é bluetooth? Porque eu sinto uma conexão toda vez que chega perto.",
+      "Se beleza desse febre, você estaria internado(a).",
+      "Se eu tivesse um real para cada vez que penso em você, já teria te levado para Paris.",
+      "Você é um eclipse? Porque ofuscou todo o resto ao seu redor.",
+      "Você é senha de Wi-Fi? Porque quando te descobri, tudo fez sentido.",
+      "Com você do lado, até segunda-feira parece sexta.",
+      "Se você fosse livro, eu te lia todos os dias.",
+      "Você é tráfego de dados? Porque sem você fico desconectado.",
+      "Você é algodão doce? Porque me deixou nas nuvens.",
+      "Você é Netflix? Porque eu passaria o dia inteiro com você.",
+      "Com esse olhar, você reiniciou meu coração.",
+      "Você é o sol do meu sistema solar.",
+      "Você não é celular, mas me dá vontade de te desbloquear o tempo todo.",
+      "Você é poema? Porque cada palavra sua rima com felicidade."
+    ];
+
+    const imagens = [
+      "fig1.png",
+      "fig2.png",
+      "fig3.png",
+      "fig4.png",
+      "fig5.png"
+    ];
+
+    function trocarCantada() {
+      const randIndex = Math.floor(Math.random() * cantadas.length);
+      const randImg = Math.floor(Math.random() * imagens.length);
+      document.getElementById("cantada").textContent = cantadas[randIndex];
+      document.getElementById("cantada-img").src = imagens[randImg];
+    }
+
+    setInterval(trocarCantada, 4000);
+    trocarCantada();
   </script>
 </body>
 </html>
