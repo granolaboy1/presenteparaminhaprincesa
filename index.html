@@ -47,17 +47,18 @@
       -webkit-overflow-scrolling: touch;
       width: 100%;
       box-sizing: border-box;
+      justify-content: center;
     }
 
     .carousel img {
-      width: 100vw;
-      height: 100vw;
-      border-radius: 0;
+      width: 90vw;
+      height: 90vw;
+      border-radius: 16px;
       flex-shrink: 0;
       object-fit: cover;
-      scroll-snap-align: start;
-      box-shadow: none;
-      transition: none;
+      scroll-snap-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      margin: 0 auto;
     }
 
     audio, .spotify-button {
