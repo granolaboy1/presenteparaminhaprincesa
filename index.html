@@ -139,7 +139,7 @@
 </head>
 <body>
   <div id="overlay">
-    <h1>Bem-vindo(a)!</h1>
+    <h1>Bem-vinda!</h1>
     <button id="startButton">Clique ❤️</button>
   </div>
 
@@ -195,7 +195,7 @@
       setInterval(updateTimer, 1000);
       updateTimer();
 
-      const cantadas = [...document.getElementById("cantada").textContent = [
+      const cantadas = [
         "Você não é Wi-Fi, mas definitivamente me conectou.",
         "Seu nome é Google? Porque você tem tudo o que eu procuro.",
         "Se beleza fosse tempo, você seria eternidade.",
@@ -226,10 +226,13 @@
         "Você é o sol do meu sistema solar.",
         "Você não é celular, mas me dá vontade de te desbloquear o tempo todo.",
         "Você é poema? Porque cada palavra sua rima com felicidade."
-      ][Math.floor(Math.random() * 30)];
+      ];
 
       const imagens = ["fig1.png", "fig2.png", "fig3.png", "fig4.png", "fig5.png"];
+      const randIndex = Math.floor(Math.random() * cantadas.length);
       const randImg = Math.floor(Math.random() * imagens.length);
+
+      document.getElementById("cantada").textContent = cantadas[randIndex];
       const imgElement = document.getElementById("cantada-img");
       imgElement.src = imagens[randImg];
       imgElement.classList.add(Math.random() < 0.5 ? 'left' : '');
