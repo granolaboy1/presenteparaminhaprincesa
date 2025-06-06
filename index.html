@@ -21,6 +21,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      overflow: hidden;
     }
 
     header {
@@ -103,46 +104,82 @@
       50% { transform: scale(1.1); }
       100% { transform: scale(1); }
     }
+
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #0d1b2a;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+    }
+
+    #startButton {
+      background-color: #e63946;
+      border: none;
+      color: white;
+      padding: 12px 24px;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
   </style>
 </head>
 <body>
-  <header>Nosso Tempo Juntos <span class="heart-animation">❤️</span></header>
-
-  <div id="timer"></div>
-
-  <section class="carousel">
-    <img src="foto1.jpg" alt="Foto 1">
-    <img src="foto2.jpg" alt="Foto 2">
-    <img src="foto3.jpg" alt="Foto 3">
-    <img src="foto4.jpg" alt="Foto 4">
-    <img src="foto5.jpg" alt="Foto 5">
-    <img src="foto6.jpg" alt="Foto 6">
-    <img src="foto7.jpg" alt="Foto 7">
-    <img src="foto8.jpg" alt="Foto 8">
-    <img src="foto9.jpg" alt="Foto 9">
-    <img src="foto10.jpg" alt="Foto 10">
-    <img src="foto11.jpg" alt="Foto 11">
-    <img src="foto12.jpg" alt="Foto 12">
-    <img src="foto13.jpg" alt="Foto 13">
-    <img src="foto14.jpg" alt="Foto 14">
-    <img src="foto15.jpg" alt="Foto 15">
-    <img src="foto16.jpg" alt="Foto 16">
-  </section>
-
-  <div class="cantadas" id="cantada-container">
-    <img id="cantada-img" src="fig1.png" alt="cantada imagem">
-    <p id="cantada"></p>
+  <div id="overlay">
+    <h1>Bem-vindo(a)!</h1>
+    <button id="startButton">Clique ❤️</button>
   </div>
 
-  <audio controls>
-    <source src="seu_audio.mp3" type="audio/mpeg">
-    Seu navegador não suporta áudio.
-  </audio>
+  <div id="content" style="display:none">
+    <header>Nosso Tempo Juntos <span class="heart-animation">❤️</span></header>
 
-  <div class="spotify-button">
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1OubIZ0ARYCUq5kceYUQiO?si=d65f16ca85ce4e53" width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    <div id="timer"></div>
+
+    <section class="carousel">
+      <img src="foto1.jpg" alt="Foto 1">
+      <img src="foto2.jpg" alt="Foto 2">
+      <img src="foto3.jpg" alt="Foto 3">
+      <img src="foto4.jpg" alt="Foto 4">
+      <img src="foto5.jpg" alt="Foto 5">
+      <img src="foto6.jpg" alt="Foto 6">
+      <img src="foto7.jpg" alt="Foto 7">
+      <img src="foto8.jpg" alt="Foto 8">
+      <img src="foto9.jpg" alt="Foto 9">
+      <img src="foto10.jpg" alt="Foto 10">
+      <img src="foto11.jpg" alt="Foto 11">
+      <img src="foto12.jpg" alt="Foto 12">
+      <img src="foto13.jpg" alt="Foto 13">
+      <img src="foto14.jpg" alt="Foto 14">
+      <img src="foto15.jpg" alt="Foto 15">
+      <img src="foto16.jpg" alt="Foto 16">
+    </section>
+
+    <div class="cantadas" id="cantada-container">
+      <img id="cantada-img" src="fig1.png" alt="cantada imagem">
+      <p id="cantada"></p>
+    </div>
+
+    <audio controls>
+      <source src="seu_audio.mp3" type="audio/mpeg">
+      Seu navegador não suporta áudio.
+    </audio>
+
+    <div class="spotify-button">
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1OubIZ0ARYCUq5kceYUQiO?si=d65f16ca85ce4e53" width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script>
     const startDate = new Date('2025-05-24T15:30:00');
     function updateTimer() {
@@ -191,11 +228,7 @@
     ];
 
     const imagens = [
-      "fig1.png",
-      "fig2.png",
-      "fig3.png",
-      "fig4.png",
-      "fig5.png"
+      "fig1.png", "fig2.png", "fig3.png", "fig4.png", "fig5.png"
     ];
 
     const randIndex = Math.floor(Math.random() * cantadas.length);
@@ -206,6 +239,32 @@
     const imgElement = document.getElementById("cantada-img");
     imgElement.src = imagens[randImg];
     imgElement.classList.add(imgSide === 'left' ? 'left' : '');
+
+    document.getElementById("startButton").addEventListener("click", function () {
+      document.getElementById("overlay").style.display = "none";
+      document.getElementById("content").style.display = "block";
+      document.body.style.overflow = "auto";
+
+      confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+
+      const duration = 1000;
+      const animationEnd = Date.now() + duration;
+      const interval = setInterval(function () {
+        if (Date.now() > animationEnd) {
+          clearInterval(interval);
+        }
+        confetti({
+          particleCount: 20,
+          startVelocity: 30,
+          spread: 360,
+          ticks: 60,
+          origin: {
+            x: Math.random(),
+            y: Math.random() - 0.2
+          }
+        });
+      }, 200);
+    });
   </script>
 </body>
 </html>
