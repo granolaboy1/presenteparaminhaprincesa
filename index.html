@@ -104,25 +104,25 @@
       100% { transform: scale(1); }
     }
 
-    /* Tela de boas-vindas */
     #overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      inset: 0;
       background-color: #0d1b2a;
+      color: white;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       z-index: 9999;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
     }
 
     #startButton {
       background-color: #e63946;
-      color: white;
       border: none;
+      color: white;
       padding: 12px 24px;
       font-size: 1.2rem;
       border-radius: 8px;
@@ -134,19 +134,14 @@
   </style>
 </head>
 <body>
-
-  <!-- Tela de boas-vindas -->
   <div id="overlay">
-    <h1>Bem-vinda!</h1>
+    <h1>Bem-vindo(a)!</h1>
     <button id="startButton">Clique ❤️</button>
   </div>
 
-  <!-- Conteúdo principal do site -->
   <div id="mainContent" style="display: none;">
     <header>Nosso Tempo Juntos <span class="heart-animation">❤️</span></header>
-
     <div id="timer"></div>
-
     <section class="carousel">
       <img src="foto1.jpg" alt="Foto 1">
       <img src="foto2.jpg" alt="Foto 2">
@@ -181,7 +176,6 @@
     </div>
   </div>
 
-  <!-- Script dos confetes e botão -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script>
     window.onload = function () {
