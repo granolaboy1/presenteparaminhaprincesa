@@ -136,7 +136,7 @@
 </head>
 <body>
   <div id="overlay">
-    <h1>Bem-vindo(a)!</h1>
+    <h1>Bem-vinda!</h1>
     <button id="startButton">Clique ❤️</button>
   </div>
 
@@ -181,20 +181,23 @@
 
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script>
-    const startDate = new Date('2025-05-24T15:30:00');
-    function updateTimer() {
-      const now = new Date();
-      const diff = now - startDate;
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-      document.getElementById('timer').innerHTML = `${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos juntos <span class="heart-animation">❤️</span>`;
-    }
-    setInterval(updateTimer, 1000);
-    updateTimer();
+    window.onload = function () {
+      const startDate = new Date('2025-05-24T15:30:00');
 
-    const cantadas = [
+      function updateTimer() {
+        const now = new Date();
+        const diff = now - startDate;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+        document.getElementById('timer').innerHTML = `${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos juntos <span class="heart-animation">❤️</span>`;
+      }
+
+      setInterval(updateTimer, 1000);
+      updateTimer();
+
+      const cantadas = [
       "Você não é Wi-Fi, mas definitivamente me conectou.",
       "Seu nome é Google? Porque você tem tudo o que eu procuro.",
       "Se beleza fosse tempo, você seria eternidade.",
@@ -225,46 +228,44 @@
       "Você é o sol do meu sistema solar.",
       "Você não é celular, mas me dá vontade de te desbloquear o tempo todo.",
       "Você é poema? Porque cada palavra sua rima com felicidade."
-    ];
+      ];
 
-    const imagens = [
-      "fig1.png", "fig2.png", "fig3.png", "fig4.png", "fig5.png"
-    ];
+      const imagens = ["fig1.png", "fig2.png", "fig3.png", "fig4.png", "fig5.png"];
+      const randIndex = Math.floor(Math.random() * cantadas.length);
+      const randImg = Math.floor(Math.random() * imagens.length);
+      const imgSide = Math.random() < 0.5 ? 'left' : 'right';
 
-    const randIndex = Math.floor(Math.random() * cantadas.length);
-    const randImg = Math.floor(Math.random() * imagens.length);
-    const imgSide = Math.random() < 0.5 ? 'left' : 'right';
+      document.getElementById("cantada").textContent = cantadas[randIndex];
+      const imgElement = document.getElementById("cantada-img");
+      imgElement.src = imagens[randImg];
+      imgElement.classList.add(imgSide === 'left' ? 'left' : '');
 
-    document.getElementById("cantada").textContent = cantadas[randIndex];
-    const imgElement = document.getElementById("cantada-img");
-    imgElement.src = imagens[randImg];
-    imgElement.classList.add(imgSide === 'left' ? 'left' : '');
+      document.getElementById("startButton").addEventListener("click", function () {
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("content").style.display = "block";
+        document.body.style.overflow = "auto";
 
-    document.getElementById("startButton").addEventListener("click", function () {
-      document.getElementById("overlay").style.display = "none";
-      document.getElementById("content").style.display = "block";
-      document.body.style.overflow = "auto";
+        confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
 
-      confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
-
-      const duration = 1000;
-      const animationEnd = Date.now() + duration;
-      const interval = setInterval(function () {
-        if (Date.now() > animationEnd) {
-          clearInterval(interval);
-        }
-        confetti({
-          particleCount: 20,
-          startVelocity: 30,
-          spread: 360,
-          ticks: 60,
-          origin: {
-            x: Math.random(),
-            y: Math.random() - 0.2
+        const duration = 1000;
+        const animationEnd = Date.now() + duration;
+        const interval = setInterval(function () {
+          if (Date.now() > animationEnd) {
+            clearInterval(interval);
           }
-        });
-      }, 200);
-    });
+          confetti({
+            particleCount: 20,
+            startVelocity: 30,
+            spread: 360,
+            ticks: 60,
+            origin: {
+              x: Math.random(),
+              y: Math.random() - 0.2
+            }
+          });
+        }, 200);
+      });
+    };
   </script>
 </body>
 </html>
