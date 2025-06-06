@@ -21,7 +21,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      overflow: hidden;
     }
 
     header {
@@ -105,25 +104,25 @@
       100% { transform: scale(1); }
     }
 
+    /* Tela de boas-vindas */
     #overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: #0d1b2a;
-      color: white;
+      background-color: #0d1b2a;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      z-index: 10000;
+      z-index: 9999;
     }
 
     #startButton {
       background-color: #e63946;
-      border: none;
       color: white;
+      border: none;
       padding: 12px 24px;
       font-size: 1.2rem;
       border-radius: 8px;
@@ -135,12 +134,15 @@
   </style>
 </head>
 <body>
+
+  <!-- Tela de boas-vindas -->
   <div id="overlay">
     <h1>Bem-vinda!</h1>
     <button id="startButton">Clique ❤️</button>
   </div>
 
-  <div id="content" style="display:none">
+  <!-- Conteúdo principal do site -->
+  <div id="mainContent" style="display: none;">
     <header>Nosso Tempo Juntos <span class="heart-animation">❤️</span></header>
 
     <div id="timer"></div>
@@ -179,6 +181,7 @@
     </div>
   </div>
 
+  <!-- Script dos confetes e botão -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script>
     window.onload = function () {
@@ -198,36 +201,36 @@
       updateTimer();
 
       const cantadas = [
-      "Você não é Wi-Fi, mas definitivamente me conectou.",
-      "Seu nome é Google? Porque você tem tudo o que eu procuro.",
-      "Se beleza fosse tempo, você seria eternidade.",
-      "Você não é GPS, mas me colocou no caminho certo.",
-      "Se você fosse um sonho, eu nunca queria acordar.",
-      "Seu pai é padeiro? Porque você é um sonho!",
-      "Você é o café do meu dia: sem você, eu não funciono.",
-      "Se beleza fosse crime, você estaria presa há muito tempo.",
-      "Você é feita de açúcar? Porque só de te olhar, minha glicose subiu!",
-      "Você tem mapa? Porque eu me perdi no seu olhar.",
-      "Você é mágico(a)? Porque sempre que te vejo, todo o resto desaparece.",
-      "Você não é nuvem, mas mexe com o meu clima.",
-      "Se eu fosse um gato, gastaria todas as minhas 7 vidas com você.",
-      "Você tem um nome ou posso te chamar de minha?",
-      "Você é um pixel? Porque está sempre no centro da minha visão.",
-      "Seu sorriso ilumina mais que meu celular à noite.",
-      "Você é bluetooth? Porque eu sinto uma conexão toda vez que chega perto.",
-      "Se beleza desse febre, você estaria internado(a).",
-      "Se eu tivesse um real para cada vez que penso em você, já teria te levado para Paris.",
-      "Você é um eclipse? Porque ofuscou todo o resto ao seu redor.",
-      "Você é senha de Wi-Fi? Porque quando te descobri, tudo fez sentido.",
-      "Com você do lado, até segunda-feira parece sexta.",
-      "Se você fosse livro, eu te lia todos os dias.",
-      "Você é tráfego de dados? Porque sem você fico desconectado.",
-      "Você é algodão doce? Porque me deixou nas nuvens.",
-      "Você é Netflix? Porque eu passaria o dia inteiro com você.",
-      "Com esse olhar, você reiniciou meu coração.",
-      "Você é o sol do meu sistema solar.",
-      "Você não é celular, mas me dá vontade de te desbloquear o tempo todo.",
-      "Você é poema? Porque cada palavra sua rima com felicidade."
+        "Você não é Wi-Fi, mas definitivamente me conectou.",
+        "Seu nome é Google? Porque você tem tudo o que eu procuro.",
+        "Se beleza fosse tempo, você seria eternidade.",
+        "Você não é GPS, mas me colocou no caminho certo.",
+        "Se você fosse um sonho, eu nunca queria acordar.",
+        "Seu pai é padeiro? Porque você é um sonho!",
+        "Você é o café do meu dia: sem você, eu não funciono.",
+        "Se beleza fosse crime, você estaria presa há muito tempo.",
+        "Você é feita de açúcar? Porque só de te olhar, minha glicose subiu!",
+        "Você tem mapa? Porque eu me perdi no seu olhar.",
+        "Você é mágico(a)? Porque sempre que te vejo, todo o resto desaparece.",
+        "Você não é nuvem, mas mexe com o meu clima.",
+        "Se eu fosse um gato, gastaria todas as minhas 7 vidas com você.",
+        "Você tem um nome ou posso te chamar de minha?",
+        "Você é um pixel? Porque está sempre no centro da minha visão.",
+        "Seu sorriso ilumina mais que meu celular à noite.",
+        "Você é bluetooth? Porque eu sinto uma conexão toda vez que chega perto.",
+        "Se beleza desse febre, você estaria internado(a).",
+        "Se eu tivesse um real para cada vez que penso em você, já teria te levado para Paris.",
+        "Você é um eclipse? Porque ofuscou todo o resto ao seu redor.",
+        "Você é senha de Wi-Fi? Porque quando te descobri, tudo fez sentido.",
+        "Com você do lado, até segunda-feira parece sexta.",
+        "Se você fosse livro, eu te lia todos os dias.",
+        "Você é tráfego de dados? Porque sem você fico desconectado.",
+        "Você é algodão doce? Porque me deixou nas nuvens.",
+        "Você é Netflix? Porque eu passaria o dia inteiro com você.",
+        "Com esse olhar, você reiniciou meu coração.",
+        "Você é o sol do meu sistema solar.",
+        "Você não é celular, mas me dá vontade de te desbloquear o tempo todo.",
+        "Você é poema? Porque cada palavra sua rima com felicidade."
       ];
 
       const imagens = ["fig1.png", "fig2.png", "fig3.png", "fig4.png", "fig5.png"];
@@ -242,7 +245,7 @@
 
       document.getElementById("startButton").addEventListener("click", function () {
         document.getElementById("overlay").style.display = "none";
-        document.getElementById("content").style.display = "block";
+        document.getElementById("mainContent").style.display = "block";
         document.body.style.overflow = "auto";
 
         confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
