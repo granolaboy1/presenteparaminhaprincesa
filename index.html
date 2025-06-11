@@ -108,42 +108,7 @@
       100% { transform: scale(1); }
     }
 
-    #overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: #0d1b2a;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-
-    #startButton {
-      background-color: #e63946;
-      border: none;
-      color: white;
-      padding: 12px 24px;
-      font-size: 1.2rem;
-      border-radius: 8px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-  </style>
-</head>
-<body>
-  <div id="overlay">
-    <h1>Bem-vinda!</h1>
-    <button id="startButton">Clique ❤️</button>
-  </div>
-
-  <div id="mainContent" style="display: none; width: 100%;">
+ <div id="mainContent" style="display: none; width: 100%;">
     <header>Nosso Tempo Juntos <span class="heart-animation">❤️</span></header>
     <div id="timer"></div>
     <section class="carousel">
