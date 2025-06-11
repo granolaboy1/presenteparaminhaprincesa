@@ -107,7 +107,10 @@
       50% { transform: scale(1.1); }
       100% { transform: scale(1); }
     }
-
+  </style>
+</head>
+<body>
+  <div id="mainContent" style="display: block; width: 100%;">
     <header>Nosso Tempo Juntos <span class="heart-animation">❤️</span></header>
     <div id="timer"></div>
     <section class="carousel">
@@ -201,31 +204,25 @@
       imgElement.src = imagens[randImg];
       imgElement.classList.add(Math.random() < 0.5 ? 'left' : '');
 
-      document.getElementById("startButton").addEventListener("click", function () {
-        document.getElementById("overlay").style.display = "none";
-        document.getElementById("mainContent").style.display = "block";
-        document.body.style.overflow = "auto";
+      confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
 
-        confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
-
-        const duration = 1000;
-        const animationEnd = Date.now() + duration;
-        const interval = setInterval(function () {
-          if (Date.now() > animationEnd) {
-            clearInterval(interval);
+      const duration = 1000;
+      const animationEnd = Date.now() + duration;
+      const interval = setInterval(function () {
+        if (Date.now() > animationEnd) {
+          clearInterval(interval);
+        }
+        confetti({
+          particleCount: 20,
+          startVelocity: 30,
+          spread: 360,
+          ticks: 60,
+          origin: {
+            x: Math.random(),
+            y: Math.random() - 0.2
           }
-          confetti({
-            particleCount: 20,
-            startVelocity: 30,
-            spread: 360,
-            ticks: 60,
-            origin: {
-              x: Math.random(),
-              y: Math.random() - 0.2
-            }
-          });
-        }, 200);
-      });
+        });
+      }, 200);
     };
   </script>
 </body>
