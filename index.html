@@ -107,6 +107,15 @@
       50% { transform: scale(1.1); }
       100% { transform: scale(1); }
     }
+
+    .fade-in {
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
@@ -142,6 +151,33 @@
     <div class="spotify-button">
       <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1OubIZ0ARYCUq5kceYUQiO?si=d65f16ca85ce4e53" width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
+
+    <!-- Seção Adicionada -->
+    <section class="fade-in" style="padding: 40px 20px; text-align: center; background-color: rgba(255,255,255,0.05); border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px;">
+      <h2 style="font-size: 1.5rem; margin-bottom: 20px;">Coisas que amo em você ❤️</h2>
+      <ol style="text-align: left; max-width: 600px; margin: 0 auto; line-height: 1.8;">
+        <li><strong>Seu sorriso</strong> — Sério, quando você sorri, parece que o mundo fica mais leve. Eu não canso de olhar.</li>
+        <li><strong>Seus olhos</strong> — Tem um brilho aí que me hipnotiza… e eu sempre me perco te olhando.</li>
+        <li><strong>Seu abraço</strong> — É tipo o meu porto seguro. Me acalma, me aquece… parece que nada mais importa.</li>
+        <li><strong>Seu beijo</strong> — É o melhor lugar do mundo. Tem gosto de "quero mais".</li>
+        <li><strong>Seu carinho</strong> — Você tem um jeito tão único de cuidar de mim… e isso me derrete.</li>
+        <li><strong>Sua personalidade</strong> — Você é incrível do jeitinho que é. Forte, doce, engraçada… tudo na medida certa.</li>
+        <li><strong>Sua atenção</strong> — Amo quando você tira um tempinho só pra mim. Me faz sentir muito especial.</li>
+        <li><strong>Sua companhia</strong> — Com você, até ficar sem fazer nada vira o melhor rolê.</li>
+        <li><strong>Suas gracinhas</strong> — Suas piadinhas, seus jeitos bobinhos… eu amo tudo isso, de verdade.</li>
+        <li><strong>Seu esforço</strong> — Admiro o quanto você corre atrás do que quer. Me inspira muito.</li>
+        <li><strong>Sua risada</strong> — É viciante! Quando você ri, eu juro que meu coração dá um pulinho.</li>
+        <li><strong>Sua voz</strong> — Tem algo na sua voz que me acalma. Dá vontade de ouvir o dia todo.</li>
+        <li><strong>Seu jeito</strong> — Seu jeitinho de falar, de andar, de se importar… me ganhou total.</li>
+        <li><strong>Seu toque</strong> — Até um toque de leve seu já muda meu dia.</li>
+        <li><strong>Seu cheiro</strong> — É o melhor cheiro do mundo. De verdade. Dá vontade de te abraçar pra sempre.</li>
+        <li><strong>Seu cabelo</strong> — Eu amo mexer nele, olhar, cheirar… é tipo perfeito.</li>
+        <li><strong>Como me trata</strong> — Você me respeita, me escuta, me valoriza. Isso não tem preço.</li>
+        <li><strong>Como me ama</strong> — Do seu jeitinho lindo, sincero e cheio de cuidado. Me sinto sortudo demais.</li>
+        <li><strong>Tudo em você</strong> — Cada detalhe, cada mania, cada risadinha… amo tudo!</li>
+        <li><strong>Porque é você</strong> — Não tem como explicar… eu amo você porque é você. Simples assim.</li>
+      </ol>
+    </section>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
